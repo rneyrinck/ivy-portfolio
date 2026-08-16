@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ivy Heller | Video Editor & Production Specialist</title>
+<meta name="description" content="Ivy Heller is a Chicago-based video editor and production specialist with experience in broadcast news, sports, documentary and commercial storytelling.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --bg:#0b0c0e;
+    --bg-alt:#131417;
+    --card:#17181c;
+    --card-hover:#1e2025;
+    --text:#f2f1ee;
+    --text-dim:#a6a8ad;
+    --text-faint:#6d6f75;
+    --accent:#e8542b;
+    --accent-soft:rgba(232,84,43,.12);
+    --line:#25262b;
+    --max:1240px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-weight:400;line-height:1;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+  section{padding:100px 0;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--accent);display:inline-block;}
+  h2.section-title{font-size:clamp(36px,5vw,58px);margin-bottom:14px;}
+  .section-sub{color:var(--text-dim);max-width:640px;font-size:16px;margin-bottom:52px;}
+
+  /* NAV */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:rgba(11,12,14,.72);backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, background .3s ease;
+  }
+  header.scrolled{border-bottom-color:var(--line);background:rgba(11,12,14,.92);}
+  nav{max-width:var(--max);margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.05em;}
+  .logo span{color:var(--accent);}
+  .nav-links{display:flex;gap:34px;list-style:none;}
+  .nav-links a{font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--text-dim);transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{
+    border:1px solid var(--accent);color:var(--accent)!important;padding:9px 20px;border-radius:2px;
+    font-size:12px;letter-spacing:.1em;
+  }
+  .nav-cta:hover{background:var(--accent);color:#0b0c0e!important;}
+  .burger{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    position:relative;padding-top:120px;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(232,84,43,.15), transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(232,84,43,.08), transparent 40%),
+      var(--bg);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;}
+  .hero-kicker{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:22px;display:flex;align-items:center;gap:10px;}
+  .hero-kicker .dot{width:8px;height:8px;background:var(--accent);border-radius:50%;display:inline-block;}
+  .hero h1{font-size:clamp(56px,9vw,120px);line-height:.92;margin-bottom:22px;}
+  .hero h1 em{font-style:normal;color:var(--accent);}
+  .hero-desc{font-size:18px;color:var(--text-dim);max-width:520px;margin-bottom:36px;}
+  .btn-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 28px;border-radius:2px;font-weight:700;font-size:13px;
+    letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border:1px solid transparent;
+    transition:all .2s ease;
+  }
+  .btn-primary{background:var(--accent);color:#0b0c0e;}
+  .btn-primary:hover{background:#ff6a3d;transform:translateY(-2px);}
+  .btn-ghost{border-color:var(--line);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--text-dim);}
+  .hero-stats{display:flex;gap:30px;margin-top:56px;flex-wrap:wrap;}
+  .stat b{font-family:'Bebas Neue';font-size:38px;color:var(--accent);display:block;}
+  .stat span{font-size:12px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.08em;}
+
+  .hero-frame{
+    position:relative;border-radius:4px;overflow:hidden;aspect-ratio:9/11;
+    border:1px solid var(--line);background:var(--card);
+  }
+  .hero-frame .facade{position:relative;width:100%;height:100%;cursor:pointer;}
+  .hero-frame img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.05);}
+  .hero-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,12,14,0) 40%,rgba(11,12,14,.85) 100%);pointer-events:none;}
+  .play-btn{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:78px;height:78px;border-radius:50%;background:rgba(232,84,43,.92);
+    display:flex;align-items:center;justify-content:center;font-size:24px;color:#0b0c0e;
+    z-index:2;transition:transform .25s ease, background .25s ease;
+  }
+  .facade:hover .play-btn{transform:translate(-50%,-50%) scale(1.1);background:#ff6a3d;}
+  .hero-frame .caption{position:absolute;bottom:18px;left:18px;right:18px;z-index:2;}
+  .hero-frame .caption .tag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700;}
+  .hero-frame .caption h4{font-size:22px;margin-top:4px;font-family:'Inter';font-weight:700;letter-spacing:0;}
+
+  /* MARQUEE */
+  .marquee-wrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;overflow:hidden;background:var(--bg-alt);}
+  .marquee{display:flex;gap:60px;white-space:nowrap;animation:scroll 32s linear infinite;width:max-content;}
+  .marquee span{font-family:'Bebas Neue';font-size:20px;color:var(--text-faint);letter-spacing:.05em;display:flex;align-items:center;gap:16px;}
+  .marquee span i{color:var(--accent);font-size:12px;}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:start;}
+  .about-lead{font-size:22px;color:var(--text);font-weight:500;margin-bottom:22px;}
+  .about-body p{color:var(--text-dim);margin-bottom:16px;font-size:15.5px;}
+  .skills-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+  .skill-pill{border:1px solid var(--line);padding:8px 16px;border-radius:20px;font-size:13px;color:var(--text-dim);}
+  .about-facts{display:flex;flex-direction:column;gap:22px;border-left:2px solid var(--line);padding-left:26px;}
+  .fact b{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:4px;}
+  .fact span{color:var(--text-dim);font-size:14.5px;}
+
+  /* EXPERIENCE TIMELINE */
+  .timeline{border-top:1px solid var(--line);}
+  .tl-item{
+    display:grid;grid-template-columns:220px 1fr;gap:40px;padding:40px 0;border-bottom:1px solid var(--line);
+  }
+  .tl-when{color:var(--text-faint);font-size:14px;font-weight:600;}
+  .tl-when .role{display:block;color:var(--text);font-size:19px;font-family:'Bebas Neue';letter-spacing:.03em;margin-top:6px;}
+  .tl-body h4{font-family:'Inter';font-weight:700;font-size:17px;margin-bottom:10px;}
+  .tl-body ul{padding-left:18px;color:var(--text-dim);font-size:14.5px;display:flex;flex-direction:column;gap:7px;}
+  .tl-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;background:var(--accent-soft);color:var(--accent);padding:6px 12px;border-radius:20px;font-weight:600;}
+
+  /* WORK / FILTER */
+  .filter-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:44px;}
+  .filter-btn{
+    padding:10px 20px;border-radius:20px;border:1px solid var(--line);background:transparent;color:var(--text-dim);
+    font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.02em;
+  }
+  .filter-btn:hover{border-color:var(--text-dim);color:var(--text);}
+  .filter-btn.active{background:var(--accent);border-color:var(--accent);color:#0b0c0e;}
+
+  .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .vcard{
+    background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;cursor:pointer;
+    transition:transform .25s ease, border-color .25s ease, background .25s ease;
+  }
+  .vcard:hover{transform:translateY(-5px);border-color:#38393f;background:var(--card-hover);}
+  .thumb{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;}
+  .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+  .vcard:hover .thumb img{transform:scale(1.06);}
+  .thumb .play{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:52px;height:52px;border-radius:50%;background:rgba(11,12,14,.72);border:1px solid rgba(255,255,255,.25);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;backdrop-filter:blur(4px);
+    transition:background .2s, transform .2s;
+  }
+  .vcard:hover .thumb .play{background:var(--accent);transform:translate(-50%,-50%) scale(1.08);}
+  .vinfo{padding:16px 18px;}
+  .vinfo .cat{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700;margin-bottom:6px;}
+  .vinfo h5{font-family:'Inter';font-weight:600;font-size:14.5px;line-height:1.35;}
+  .grid-empty{display:none;color:var(--text-faint);padding:40px 0;text-align:center;}
+
+  .load-more-wrap{text-align:center;margin-top:40px;}
+
+  /* MODAL */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(6,6,7,.92);z-index:2000;
+    display:none;align-items:center;justify-content:center;padding:24px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-box{width:100%;max-width:1000px;}
+  .modal-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:4px;overflow:hidden;}
+  .modal-frame iframe{width:100%;height:100%;border:0;}
+  .modal-close{
+    position:fixed;top:20px;right:24px;background:rgba(23,24,28,.9);border:1px solid var(--line);
+    color:var(--text);font-size:20px;cursor:pointer;width:44px;height:44px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;z-index:2001;transition:background .2s;
+  }
+  .modal-close:hover{background:var(--accent);color:#0b0c0e;}
+  .modal-title{color:var(--text-dim);font-size:14px;margin-top:14px;}
+
+  /* CONTACT */
+  .contact{background:var(--bg-alt);border-top:1px solid var(--line);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .contact h2{font-size:clamp(36px,6vw,64px);margin-bottom:20px;}
+  .contact p.lead{color:var(--text-dim);font-size:17px;margin-bottom:34px;max-width:480px;}
+  .contact-links{display:flex;flex-direction:column;gap:16px;}
+  .contact-link{display:flex;align-items:center;gap:14px;font-size:16px;font-weight:600;padding:16px 20px;border:1px solid var(--line);border-radius:4px;transition:all .2s;}
+  .contact-link:hover{border-color:var(--accent);background:var(--accent-soft);}
+  .contact-link i{color:var(--accent);font-size:18px;width:20px;}
+  .social-row{display:flex;gap:14px;margin-top:30px;}
+  .social-row a{
+    width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;
+    transition:all .2s;
+  }
+  .social-row a:hover{background:var(--accent);border-color:var(--accent);color:#0b0c0e;}
+
+  footer{padding:34px 0;text-align:center;color:var(--text-faint);font-size:13px;border-top:1px solid var(--line);}
+  footer a{color:var(--text-dim);}
+  footer a:hover{color:var(--accent);}
+
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-frame{aspect-ratio:16/10;order:-1;}
+    .about-grid{grid-template-columns:1fr;}
+    .video-grid{grid-template-columns:repeat(2,1fr);}
+    .contact-grid{grid-template-columns:1fr;}
+    .tl-item{grid-template-columns:1fr;gap:14px;}
+    .nav-links{display:none;}
+    .burger{display:block;}
+  }
+  @media(max-width:600px){
+    section{padding:70px 0;}
+    .wrap{padding:0 20px;}
+    .video-grid{grid-template-columns:1fr;}
+    .hero-stats{gap:22px;}
+  }
+
+  .nav-links.mobile-open{
+    display:flex;position:fixed;top:64px;left:0;right:0;background:var(--bg);
+    flex-direction:column;padding:24px 32px;gap:0;border-bottom:1px solid var(--line);
+  }
+  .nav-links.mobile-open a{padding:14px 0;border-bottom:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav>
+    <a href="#top" class="logo">IVY<span>.</span>HELLER</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+    </ul>
+    <button class="burger" id="burger"><i class="fa-solid fa-bars"></i></button>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-kicker"><span class="dot"></span> Chicago, IL &middot; Available for Freelance &amp; Full-Time</div>
+      <h1>Video<br>Editor &amp;<br><em>Storyteller.</em></h1>
+      <p class="hero-desc">I'm Ivy Heller — a post-production specialist who's cut breaking news, live sports, documentary features and branded content for broadcast and digital audiences across the Midwest.</p>
+      <div class="btn-row">
+        <a href="#work" class="btn btn-primary"><i class="fa-solid fa-play"></i> View My Work</a>
+        <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>7+</b><span>Years Experience</span></div>
+        <div class="stat"><b>200+</b><span>Broadcasts Produced</span></div>
+        <div class="stat"><b>40+</b><span>Featured Projects</span></div>
+        <div class="stat"><b>1</b><span>Emmy Nomination</span></div>
+      </div>
+    </div>
+    <div class="hero-frame">
+      <div class="facade" data-video="wuGBlyWF2N8">
+        <img src="https://img.youtube.com/vi/wuGBlyWF2N8/hqdefault.jpg" alt="Featured project still">
+        <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        <div class="caption">
+          <div class="tag">Featured Personal Project</div>
+          <h4>Industrial Sunglasses — Estar Music Video</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span><i class="fa-solid fa-circle"></i>BROADCAST NEWS</span>
+    <span><i class="fa-solid fa-circle"></i>LIVE SPORTS</span>
+    <span><i class="fa-solid fa-circle"></i>DOCUMENTARY</span>
+    <span><i class="fa-solid fa-circle"></i>MUSIC VIDEOS</span>
+    <span><i class="fa-solid fa-circle"></i>MOTION GRAPHICS</span>
+    <span><i class="fa-solid fa-circle"></i>COMMERCIAL</span>
+    <span><i class="fa-solid fa-circle"></i>BROADCAST NEWS</span>
+    <span><i class="fa-solid fa-circle"></i>LIVE SPORTS</span>
+    <span><i class="fa-solid fa-circle"></i>DOCUMENTARY</span>
+    <span><i class="fa-solid fa-circle"></i>MUSIC VIDEOS</span>
+    <span><i class="fa-solid fa-circle"></i>MOTION GRAPHICS</span>
+    <span><i class="fa-solid fa-circle"></i>COMMERCIAL</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-facts">
+      <div class="fact"><b>Based In</b><span>Chicago, IL (Ohio native)</span></div>
+      <div class="fact"><b>Education</b><span>B.S., Visual Communication Technology<br>Bowling Green State University</span></div>
+      <div class="fact"><b>Focus</b><span>Post-production &amp; editing, with full-cycle production experience</span></div>
+      <div class="fact"><b>Software</b><span>Adobe Premiere Pro, After Effects</span></div>
+    </div>
+    <div>
+      <div class="eyebrow">About Ivy</div>
+      <p class="about-lead">A recent Chicago transplant and Ohio native who turns raw footage into stories worth watching.</p>
+      <div class="about-body">
+        <p>I'm particularly adept in post-production but can juggle all phases of a shoot — from field production and studio camera work to lighting, audio and final delivery. I'm passionate about nature, animals, the arts, and helping others, and I look for opportunities to tell stories that address social issues through creative, honest storytelling.</p>
+        <p>I love collaborating with a team and motivating the people around me to do their best work — whether that's a fast-turnaround breaking news package or a long-form documentary series.</p>
+      </div>
+      <div class="skills-list">
+        <span class="skill-pill">Video Editing</span>
+        <span class="skill-pill">Field &amp; Studio Production</span>
+        <span class="skill-pill">Camera Operation (Studio / Jib / Field)</span>
+        <span class="skill-pill">Lighting Design</span>
+        <span class="skill-pill">Audio Mixing</span>
+        <span class="skill-pill">Broadcast Graphics</span>
+        <span class="skill-pill">Motion Graphics</span>
+        <span class="skill-pill">Technical Direction</span>
+        <span class="skill-pill">Photography</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="eyebrow">Experience</div>
+    <h2 class="section-title">Where I've worked</h2>
+    <p class="section-sub">Seven-plus years across local broadcast news and public television, from production assistant to full-time photographer and editor.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-when">2021 — 2024<span class="role">WSYX ABC6 / FOX28</span></div>
+        <div class="tl-body">
+          <h4>Production Assistant → Photographer / Editor</h4>
+          <ul>
+            <li>Shot and edited studio and field content spanning breaking news, weather and feature segments</li>
+            <li>Served as the sole weekend editor for Good Day Columbus</li>
+            <li>Produced broadcast graphics and delivered under tight, live-TV deadlines</li>
+          </ul>
+          <div class="tl-badges">
+            <span class="badge"><i class="fa-solid fa-trophy"></i> Emmy-Nominated — Best Newscast, 2024</span>
+            <span class="badge"><i class="fa-solid fa-star"></i> 3x Internal Photo Contest Winner</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">2017 — 2021<span class="role">WBGU-PBS</span></div>
+        <div class="tl-body">
+          <h4>Production Assistant → Production Manager</h4>
+          <ul>
+            <li>Operated studio, jib and JVC field cameras, plus lighting, audio and switchboard/technical direction</li>
+            <li>Edited 200+ ESPN broadcasts, cooking programs, promos and syndicated series in Premiere Pro &amp; After Effects</li>
+            <li>Promoted from Production Assistant to Production Manager over four years</li>
+          </ul>
+          <div class="tl-badges">
+            <span class="badge"><i class="fa-solid fa-award"></i> 2019 Spirit Award</span>
+            <span class="badge"><i class="fa-solid fa-award"></i> 2021 "Get's It" Award</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow">Selected Work</div>
+    <h2 class="section-title">Watch the reel</h2>
+    <p class="section-sub">A cross-section of broadcast news, live sports, PBS documentary series and personal projects. Click any thumbnail to play.</p>
+
+    <div class="filter-row" id="filterRow">
+      <button class="filter-btn active" data-filter="all">All Work</button>
+      <button class="filter-btn" data-filter="wsyx">WSYX News</button>
+      <button class="filter-btn" data-filter="woodshop">American Woodshop</button>
+      <button class="filter-btn" data-filter="athletics">WBGU Athletics</button>
+      <button class="filter-btn" data-filter="specials">PBS Specials</button>
+      <button class="filter-btn" data-filter="personal">Personal Projects</button>
+    </div>
+
+    <div class="video-grid" id="videoGrid"></div>
+    <p class="grid-empty" id="gridEmpty">No videos in this category yet.</p>
+
+    <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
+      <button class="btn btn-ghost" id="loadMoreBtn">Show More</button>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow">Get In Touch</div>
+      <h2>Let's tell your<br>next story.</h2>
+      <p class="lead">Available for freelance and full-time editing, production and photography work. Based in Chicago — open to remote and on-location projects.</p>
+      <div class="social-row">
+        <a href="https://www.linkedin.com/in/ivy-heller/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/ivyheller" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.youtube.com/channel/UCNbl9vBbSiB1cYkeotdpJhw" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://twitter.com/EeveeHeller" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:ivyheller3@gmail.com"><i class="fa-solid fa-envelope"></i> ivyheller3@gmail.com</a>
+      <a class="contact-link" href="tel:4194387067"><i class="fa-solid fa-phone"></i> 419.438.7067</a>
+      <a class="contact-link" href="https://www.linkedin.com/in/ivy-heller/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i> linkedin.com/in/ivy-heller</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">&copy; <span id="year"></span> Ivy Heller. Video Editor &amp; Storyteller. Built with care.</div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-frame" id="modalFrame"></div>
+    <div class="modal-title" id="modalTitle"></div>
+  </div>
+</div>
+
+<script>
+// ---------- DATA ----------
+const videos = [
+  // WSYX News
+  {id:"ahEwuqMJboM", title:"Columbus Critter Caper", cat:"wsyx", catLabel:"WSYX News"},
+  {id:"3MY6mKMRdAs", title:"Mike McCarthy LIVE — 7AM 06.20.24", cat:"wsyx", catLabel:"WSYX News"},
+  {id:"60URlz28GyI", title:"Mike McCarthy LIVE — 6:30AM 06.20.24", cat:"wsyx", catLabel:"WSYX News"},
+  {id:"Zqod-LLujhI", title:"Mike McCarthy LIVE — 7AM 06.12.24", cat:"wsyx", catLabel:"WSYX News"},
+  {id:"tkwifuqQMd8", title:"Around Town at Play, Cbus — 4.14.23", cat:"wsyx", catLabel:"WSYX News"},
+  {id:"5uRSXiU9cWM", title:"Foster Need in Columbus, Ohio", cat:"wsyx", catLabel:"WSYX News"},
+
+  // American Woodshop
+  {id:"i8mWlzukhjo", title:"Adirondack Camp Chair", cat:"woodshop", catLabel:"American Woodshop"},
+  {id:"iR7cr9y3BrY", title:"Custom Kitchen Tools", cat:"woodshop", catLabel:"American Woodshop"},
+  {id:"eGLcJAxO5q8", title:"American Folk Art, Weathervanes and Wall Art", cat:"woodshop", catLabel:"American Woodshop"},
+  {id:"eVcme95POrg", title:"Three Found Art Sculpted Tables", cat:"woodshop", catLabel:"American Woodshop"},
+  {id:"7NCqRcEn8nc", title:"Kitchen Live-Edge Blended Wood Cutting Boards", cat:"woodshop", catLabel:"American Woodshop"},
+  {id:"NNcOSmlE7zI", title:"Tall Turned Table / Woodturning", cat:"woodshop", catLabel:"American Woodshop"},
+  {id:"GOVkK-2BQfs", title:"Shaker-Inspired Tall Case Maple Clock", cat:"woodshop", catLabel:"American Woodshop"},
+  {id:"EFDdV5uvBP4", title:"Tri-Leg Triangular Seat with Tapered Legs", cat:"woodshop", catLabel:"American Woodshop"},
+  {id:"4V93nSy0_pI", title:"Sculpting Furniture — Maloof-Inspired Hard Line Grace", cat:"woodshop", catLabel:"American Woodshop"},
+  {id:"IlcCwdH74Ro", title:"Carving American Folk Art / Sharpening Tips", cat:"woodshop", catLabel:"American Woodshop"},
+  {id:"Z8pK321GTPE", title:"Custom Kitchen Cutlery and Block Keep", cat:"woodshop", catLabel:"American Woodshop"},
+  {id:"GvrJx-dlAVc", title:"Woodworking Ways / The Four Shop Tour", cat:"woodshop", catLabel:"American Woodshop"},
+
+  // WBGU Athletics
+  {id:"flb4FYfzvBQ", title:"NCAAF: Western Michigan at Bowling Green", cat:"athletics", catLabel:"WBGU Athletics"},
+  {id:"ye9PKC4dUNk", title:"Best Sequences — WBB &amp; MBB", cat:"athletics", catLabel:"WBGU Athletics"},
+  {id:"O9gyn4-q-CE", title:"BGSU vs. Purdue Fort Wayne — Volleyball", cat:"athletics", catLabel:"WBGU Athletics"},
+  {id:"2hs15O_r7IY", title:"BGSU vs. Davis &amp; Elkins — Women's Basketball", cat:"athletics", catLabel:"WBGU Athletics"},
+
+  // PBS Specials (Kids Promos, Great American Read, Summer in Ohio, Cooks)
+  {id:"p9CZwzQwk9s", title:"Pearl Loves PBS!", cat:"specials", catLabel:"PBS Kids Promo"},
+  {id:"0UBSvKq1v3U", title:"LJ Loves PBS!", cat:"specials", catLabel:"PBS Kids Promo"},
+  {id:"6urSuKfgbSc", title:"Madison Loves PBS!", cat:"specials", catLabel:"PBS Kids Promo"},
+  {id:"3rYliPrq3R4", title:"The Great American Read — Sara A. Bushong", cat:"specials", catLabel:"The Great American Read"},
+  {id:"BB9u7uF22fo", title:"The Great American Read — Amanda McGuire Rzicznek", cat:"specials", catLabel:"The Great American Read"},
+  {id:"XGi3GEOY0Sc", title:"The Great American Read — Dr. Margaret Zoller Booth", cat:"specials", catLabel:"The Great American Read"},
+  {id:"TSIpGHN0WbQ", title:"The Great American Read — Dr. Rodney Rogers, BGSU President", cat:"specials", catLabel:"The Great American Read"},
+  {id:"0HBQgW9W3ZI", title:"Summer in Ohio: Inkcarceration", cat:"specials", catLabel:"Summer in Ohio"},
+  {id:"FG-hMBR-oSo", title:"Summer in Ohio: Crafted Kale &amp; Ale Festival", cat:"specials", catLabel:"Summer in Ohio"},
+  {id:"5DMd2R8ZZgA", title:"Summer in Ohio: Asian Festival, Columbus", cat:"specials", catLabel:"Summer in Ohio"},
+  {id:"Sxx5EkvyUKQ", title:"WBGU Cooks: Lasting Legacies", cat:"specials", catLabel:"WBGU Cooks"},
+
+  // Personal Projects
+  {id:"wuGBlyWF2N8", title:"Industrial Sunglasses — Estar Music Video", cat:"personal", catLabel:"Personal Project"},
+  {id:"-uZRIi-kfWo", title:"Zombies — Childish Gambino", cat:"personal", catLabel:"Personal Project"},
+  {id:"qU_8N0K6Gcc", title:"Life Alert Commercial", cat:"personal", catLabel:"Personal Project"},
+  {id:"kgS33bvs4PE", title:"CHOCOLATE (Animation)", cat:"personal", catLabel:"Personal Project"},
+  {id:"NE4_T0p5xso", title:"Logo Animation 01", cat:"personal", catLabel:"Personal Project"},
+  {id:"3c1dTB2KkZ4", title:"Logo Animation 02", cat:"personal", catLabel:"Personal Project"},
+  {id:"dXO6QKlLIhQ", title:"Logo Animation 03", cat:"personal", catLabel:"Personal Project"},
+];
+
+const PAGE_SIZE = 9;
+let currentFilter = "all";
+let visibleCount = PAGE_SIZE;
+
+const grid = document.getElementById("videoGrid");
+const emptyMsg = document.getElementById("gridEmpty");
+const loadMoreWrap = document.getElementById("loadMoreWrap");
+const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+function render(){
+  const filtered = currentFilter === "all" ? videos : videos.filter(v => v.cat === currentFilter);
+  const toShow = filtered.slice(0, visibleCount);
+  grid.innerHTML = "";
+  toShow.forEach(v => {
+    const card = document.createElement("div");
+    card.className = "vcard";
+    card.dataset.video = v.id;
+    card.dataset.title = v.title;
+    card.innerHTML = `
+      <div class="thumb">
+        <img loading="lazy" src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}">
+        <div class="play"><i class="fa-solid fa-play"></i></div>
+      </div>
+      <div class="vinfo">
+        <div class="cat">${v.catLabel}</div>
+        <h5>${v.title}</h5>
+      </div>`;
+    grid.appendChild(card);
+  });
+  emptyMsg.style.display = filtered.length === 0 ? "block" : "none";
+  loadMoreWrap.style.display = filtered.length > visibleCount ? "block" : "none";
+}
+render();
+
+document.getElementById("filterRow").addEventListener("click", e => {
+  const btn = e.target.closest(".filter-btn");
+  if(!btn) return;
+  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  currentFilter = btn.dataset.filter;
+  visibleCount = PAGE_SIZE;
+  render();
+});
+
+loadMoreBtn.addEventListener("click", () => {
+  visibleCount += PAGE_SIZE;
+  render();
+});
+
+// ---------- MODAL ----------
+const overlay = document.getElementById("modalOverlay");
+const modalFrame = document.getElementById("modalFrame");
+const modalTitle = document.getElementById("modalTitle");
+
+function openModal(id, title){
+  modalFrame.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" title="${title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+  modalTitle.textContent = title;
+  overlay.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeModal(){
+  overlay.classList.remove("open");
+  modalFrame.innerHTML = "";
+  document.body.style.overflow = "";
+}
+
+grid.addEventListener("click", e => {
+  const card = e.target.closest(".vcard");
+  if(!card) return;
+  openModal(card.dataset.video, card.dataset.title);
+});
+
+document.querySelector(".facade").addEventListener("click", function(){
+  openModal(this.dataset.video, "Industrial Sunglasses — Estar Music Video");
+});
+
+document.getElementById("modalClose").addEventListener("click", closeModal);
+overlay.addEventListener("click", e => { if(e.target === overlay) closeModal(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeModal(); });
+
+// ---------- NAV ----------
+const header = document.getElementById("siteHeader");
+window.addEventListener("scroll", () => {
+  header.classList.toggle("scrolled", window.scrollY > 20);
+});
+const burger = document.getElementById("burger");
+const navLinks = document.getElementById("navLinks");
+burger.addEventListener("click", () => navLinks.classList.toggle("mobile-open"));
+navLinks.addEventListener("click", e => { if(e.target.tagName === "A") navLinks.classList.remove("mobile-open"); });
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
